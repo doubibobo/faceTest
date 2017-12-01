@@ -12,4 +12,11 @@ pip install opencv-contrib-python
 
 这里真的有好多坑……
 
+参考博客如下：膜拜大神！
+
 http://www.cnblogs.com/neo-T/p/6426029.html
+http://www.cnblogs.com/neo-T/p/6430583.html
+http://www.cnblogs.com/neo-T/p/6432596.html
+http://www.cnblogs.com/neo-T/p/6445227.html
+http://www.cnblogs.com/neo-T/p/6477378.html
+http://www.cnblogs.com/neo-T/p/6511273.html
