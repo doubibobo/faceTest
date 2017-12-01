@@ -11,3 +11,5 @@ pip install opencv-python即可
 pip install opencv-contrib-python
 
 这里真的有好多坑……
+
+http://www.cnblogs.com/neo-T/p/6426029.html
