@@ -20,3 +20,13 @@ http://www.cnblogs.com/neo-T/p/6432596.html
 http://www.cnblogs.com/neo-T/p/6445227.html
 http://www.cnblogs.com/neo-T/p/6477378.html
 http://www.cnblogs.com/neo-T/p/6511273.html
+
+更：关于各种包的版本问题
+
+构建人工神经网络CNN时，遇到了sklearn这个包有关模型弃用的问题
+好在pycharm有强大的包可视化管理工具，在File->setting->Project->Project Interpreter中
+将sklearn还原到上一个版本即可
+在参考大神博客的时候
+注意到大神用的构建二维卷积层的Keras接口API发生了改变，于是进行了调整，这里划重点！！！
+
+附Keras中文文档链接：http://keras-cn.readthedocs.io/en/latest/layers/convolutional_layer/
