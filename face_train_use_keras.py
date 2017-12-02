@@ -186,9 +186,10 @@ class Model:
         # 浮点归一化
         image = image.astype('float32')
         image /= 255
-        reslut = self.model.predict_data(image)
+        reslut = self.model.predict_proba(image)
         print('result:', reslut)
         # 返回结果集
+        reslut = self.model.predict_classes(image)
         return reslut[0]
 
 if __name__ == '__main__':
