@@ -1,0 +1,11 @@
+﻿  rabit.cpp
+c:\users\zhuch\source\repos\rabitproject\rabitproject\rabit.cpp(35): warning C4305: “初始化”: 从“int”到“GLfloat”截断
+c:\users\zhuch\source\repos\rabitproject\rabitproject\rabit.cpp(36): warning C4305: “初始化”: 从“int”到“GLfloat”截断
+c:\users\zhuch\source\repos\rabitproject\rabitproject\rabit.cpp(37): warning C4305: “初始化”: 从“int”到“GLfloat”截断
+c:\users\zhuch\source\repos\rabitproject\rabitproject\rabit.cpp(38): warning C4305: “初始化”: 从“int”到“GLfloat”截断
+c:\users\zhuch\source\repos\rabitproject\rabitproject\rabit.cpp(39): warning C4305: “初始化”: 从“int”到“GLfloat”截断
+c:\users\zhuch\source\repos\rabitproject\rabitproject\rabit.cpp(40): warning C4305: “初始化”: 从“int”到“GLfloat”截断
+c:\users\zhuch\source\repos\rabitproject\rabitproject\rabit.cpp(383): warning C4244: “=”: 从“double”转换到“GLfloat”，可能丢失数据
+c:\users\zhuch\source\repos\rabitproject\rabitproject\rabit.cpp(391): warning C4244: “=”: 从“double”转换到“GLfloat”，可能丢失数据
+  rabitProject.vcxproj -> C:\Users\zhuch\source\repos\rabitProject\Debug\rabitProject.exe
+  rabitProject.vcxproj -> C:\Users\zhuch\source\repos\rabitProject\Debug\rabitProject.pdb (Partial PDB)
