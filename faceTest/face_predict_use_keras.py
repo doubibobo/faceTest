@@ -9,7 +9,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 if __name__ == '__main__':
     # 加载模型
     model = Model()
-    model.load_model(file_path='E:\pythonProject\model\doubibobo.face.model.h5')
+    model.load_model(file_path='E:\\pythonProject\\faceTest\\model\\allPeople.face.model.h5')
 
     # 人脸矩形的边框颜色
     color = (0, 255, 255)
@@ -32,23 +32,40 @@ if __name__ == '__main__':
         # 利用分类器识别人脸
         faceRects = somethingClassfier.detectMultiScale(grey, scaleFactor = 1.2, minNeighbors = 3, minSize = (32, 32))
         # 大于0表示可以检测到人脸，faceRects表示人脸数目
+
+        theCount = len(faceRects)
+
         print(len(faceRects))
+        count = "current number：" + str(theCount)
+        print(count)
+
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        cv2.putText(frame, count, (30, 30), font, 1, (255, 0, 255), 4)
+
         if len(faceRects) > 0:
             for faceRect in faceRects:
                 x, y, w, h = faceRect
-
                 # 截取图像进行识别
                 image = frame[y-10: y+h+10,x-10:x+w+10]
                 # 画出矩形框
                 cv2.rectangle(frame, (x-10,y-10),(x+w+10, y+h+10), color, 2)
-
                 who = model.face_predict(image)
+                print(who)
                 if who == 0:
                     font = cv2.FONT_HERSHEY_SIMPLEX
                     cv2.putText(frame, 'doubibobo', (x + 30, y + 30), font, 1, (255, 0, 255), 4)
                 elif who == 1:
                     font = cv2.FONT_HERSHEY_SIMPLEX
                     cv2.putText(frame, 'guo', (x + 30, y + 30), font, 1, (255, 0, 255), 4)
+                elif who == 2:
+                    font = cv2.FONT_HERSHEY_SIMPLEX
+                    cv2.putText(frame, 'li', (x + 30, y + 30), font, 1, (255, 0, 255), 4)
+                elif who == 3:
+                    font = cv2.FONT_HERSHEY_SIMPLEX
+                    cv2.putText(frame, 'ge', (x + 30, y + 30), font, 1, (255, 0, 255), 4)
+                elif who == 4:
+                    font = cv2.FONT_HERSHEY_SIMPLEX
+                    cv2.putText(frame, 'yao', (x + 30, y + 30), font, 1, (255, 0, 255), 4)
                 else:
                     font = cv2.FONT_HERSHEY_SIMPLEX
                     cv2.putText(frame, 'unknown', (x + 30, y + 30), font, 1, (255, 0, 255), 4)

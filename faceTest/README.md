@@ -15,10 +15,15 @@ pip install opencv-contrib-python
 参考博客如下：膜拜大神！
 
 http://www.cnblogs.com/neo-T/p/6426029.html
+
 http://www.cnblogs.com/neo-T/p/6430583.html
+
 http://www.cnblogs.com/neo-T/p/6432596.html
+
 http://www.cnblogs.com/neo-T/p/6445227.html
+
 http://www.cnblogs.com/neo-T/p/6477378.html
+
 http://www.cnblogs.com/neo-T/p/6511273.html
 
 更：关于各种包的版本问题
@@ -29,4 +34,6 @@ http://www.cnblogs.com/neo-T/p/6511273.html
 在参考大神博客的时候
 注意到大神用的构建二维卷积层的Keras接口API发生了改变，于是进行了调整，这里划重点！！！
 
-附Keras中文文档链接：http://keras-cn.readthedocs.io/en/latest/layers/convolutional_layer/
+附Keras中文文档链接
+
+http://keras-cn.readthedocs.io/en/latest/layers/convolutional_layer/

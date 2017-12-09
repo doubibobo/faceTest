@@ -34,7 +34,7 @@ class Datatest:
         self.input_shape = None
 
     # 按照交叉验证的原则划分数据集，进行预处理操作
-    def load(self, img_rows = IMAGE_SIZE, img_cols = IMAGE_SIZE, img_channels = 3, nb_classes = 2):
+    def load(self, img_rows = IMAGE_SIZE, img_cols = IMAGE_SIZE, img_channels = 3, nb_classes = 6):
         # 加载数据集到内存
         images, labels = load_datatest(self.path_name)
         # 训练集和验证集
@@ -81,7 +81,7 @@ class Model:
         self.model = None
 
     # 建立自己的训练模型
-    def build_model(self, dataset, nb_classes = 2):
+    def build_model(self, dataset, nb_classes = 6):
         # 创立一个空的神经网络模型，线性堆叠模型，各神经网络层会执行顺序添加
         self.model = Sequential()
         # 以下每一个add都意味着顺序添加一个网络层
@@ -126,7 +126,7 @@ class Model:
         self.model.summary()
 
     # 训练自己的模型
-    def train(self, dataset, batch_size=20, nb_epoch=10, data_augmentation = True):
+    def train(self, dataset, batch_size=40, nb_epoch=20, data_augmentation = True):
         # 采用sgd优化器进行训练，首先生成一个优化器对象
         sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
         # 完成实际模型的配置工作
@@ -165,7 +165,8 @@ class Model:
             )
 
     # 将模型进行保存
-    MODEL_PATH = 'E:\pythonProject\doubibobo.face.model.h5'
+    MODEL_PATH = 'E:\pythonProject\\faceTest\doubibobo.face.model.h5'
+
     def save_model(self, file_path = MODEL_PATH):
         self.model.save(file_path)
 
@@ -190,13 +191,23 @@ class Model:
         print('result:', reslut)
         # 返回结果集
         reslut = self.model.predict_classes(image)
+        print(reslut)
         return reslut[0]
 
+    # 进行模型准确率的预测
+    def evaluate(self, dataset):
+        score = self.model.evaluate(dataset.test_images, dataset.test_labels, verbose = 1)
+        print("%s: %.2f%%" % (self.model.metrics_names[1], score[1]*100))
+
 if __name__ == '__main__':
-    dataset = Datatest("E:\pythonProject\Practice")
+    dataset = Datatest("E:\pythonProject\\faceTest\Practice")
     dataset.load()
 
+    # model = Model()
+    # model.build_model(dataset)
+    # model.train(dataset)
+    # model.save_model(file_path='E:\pythonProject\\faceTest\model\\allPeople.face.model.h5')
+
     model = Model()
-    model.build_model(dataset)
-    model.train(dataset)
-    model.save_model(file_path='E:\pythonProject\model\doubibobo.face.model.h5')
+    model.load_model(file_path='E:\pythonProject\\faceTest\model\\allPeople.face.model.h5')
+    model.evaluate(dataset)

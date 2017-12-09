@@ -70,6 +70,6 @@ def CatchUsbVideo(window_name, camera_index, catchNumber, imagePath):
     cv2.destroyAllWindows()
 
 if __name__ == '__main__':
-    CatchUsbVideo("catch the picture from the video", 0, 1000, "E:\pythonProject\Practice\li")
+    CatchUsbVideo("catch the picture from the video", 0, 1000, "E:\pythonProject\\faceTest\Practice\yao")
 
 # print("hello, world!")

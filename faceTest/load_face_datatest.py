@@ -11,9 +11,6 @@ def resetSizeoftheImage(image, height = IMAGE_SIZE, width = IMAGE_SIZE):
     top, bottom, left, right = (0, 0, 0, 0)
     # 截取图像的尺寸
     h, w, _ = image.shape
-    print(h)
-    print(w)
-    print(_)
     # 如果图像的长宽不相同，则补充图像，是的图像的长和宽相同
     longest_edgt = max(h, w)
     # 计算较短的边所需要补充的像素大小范围
@@ -59,9 +56,34 @@ def load_datatest(path_name):
     images, labels = read_path(path_name)
     images = np.array(images)
     print(images.shape)
-    # 标注数据
-    labels = np.array([0 if label.endswith('me') else 1 for label in labels])
+
+    # labels = np.array(labels)
+
+    # 设置数组的大小，将标签转化为分类器中的类别种类，数据等
+    # np.arange(len(labels))
+    theLabel = np.arange(len(labels))
+
+    # 为训练数据设置类别编号
+    for index in range(len(labels)):
+        if labels[index].endswith("me"):
+            theLabel[index] = np.array([0])
+        elif labels[index].endswith("guo"):
+            theLabel[index] = np.array([1])
+        elif labels[index].endswith("li"):
+            theLabel[index] = np.array([2])
+        elif labels[index].endswith("ge"):
+            theLabel[index] = np.array([3])
+        elif labels[index].endswith("yao"):
+            theLabel[index] = np.array([4])
+        else:
+            theLabel[index] = np.array([5])
+
+    # print(theLabel)
+    labels = theLabel
+    # labels = np.array([0 if label.endswith('me') else 1 for label in labels])
+    print(labels.shape)
+    print(labels)
     return images, labels
 
-# if __name__ == '__main__':
-#     images, labels = load_datatest("E:\pythonProject\Practice")
+if __name__ == '__main__':
+    images, labels = load_datatest("E:\pythonProject\\faceTest\Practice")
