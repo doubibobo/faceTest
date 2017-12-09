@@ -203,11 +203,11 @@ if __name__ == '__main__':
     dataset = Datatest("E:\pythonProject\\faceTest\Practice")
     dataset.load()
 
-    # model = Model()
-    # model.build_model(dataset)
-    # model.train(dataset)
-    # model.save_model(file_path='E:\pythonProject\\faceTest\model\\allPeople.face.model.h5')
-
     model = Model()
-    model.load_model(file_path='E:\pythonProject\\faceTest\model\\allPeople.face.model.h5')
-    model.evaluate(dataset)
+    model.build_model(dataset)
+    model.train(dataset)
+    model.save_model(file_path='E:\pythonProject\\faceTest\model\\allPeople.face.model.h5')
+
+    # model = Model()
+    # model.load_model(file_path='E:\pythonProject\\faceTest\model\\allPeople.face.model.h5')
+    # model.evaluate(dataset)

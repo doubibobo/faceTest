@@ -36,7 +36,7 @@ if __name__ == '__main__':
         theCount = len(faceRects)
 
         print(len(faceRects))
-        count = "current number：" + str(theCount)
+        count = "current number:" + str(theCount)
         print(count)
 
         font = cv2.FONT_HERSHEY_SIMPLEX
@@ -46,29 +46,25 @@ if __name__ == '__main__':
             for faceRect in faceRects:
                 x, y, w, h = faceRect
                 # 截取图像进行识别
-                image = frame[y-10: y+h+10,x-10:x+w+10]
+                image = grey[y-10: y+h+10,x-10:x+w+10]
                 # 画出矩形框
                 cv2.rectangle(frame, (x-10,y-10),(x+w+10, y+h+10), color, 2)
                 who = model.face_predict(image)
                 print(who)
+                theName = "unknown"
                 if who == 0:
-                    font = cv2.FONT_HERSHEY_SIMPLEX
-                    cv2.putText(frame, 'doubibobo', (x + 30, y + 30), font, 1, (255, 0, 255), 4)
+                    theName = "doubibobo"
                 elif who == 1:
-                    font = cv2.FONT_HERSHEY_SIMPLEX
-                    cv2.putText(frame, 'guo', (x + 30, y + 30), font, 1, (255, 0, 255), 4)
+                    theName = "guojuncheng"
                 elif who == 2:
-                    font = cv2.FONT_HERSHEY_SIMPLEX
-                    cv2.putText(frame, 'li', (x + 30, y + 30), font, 1, (255, 0, 255), 4)
+                    theName = "lipeng"
                 elif who == 3:
-                    font = cv2.FONT_HERSHEY_SIMPLEX
-                    cv2.putText(frame, 'ge', (x + 30, y + 30), font, 1, (255, 0, 255), 4)
+                    theName = "gelingqiao"
                 elif who == 4:
-                    font = cv2.FONT_HERSHEY_SIMPLEX
-                    cv2.putText(frame, 'yao', (x + 30, y + 30), font, 1, (255, 0, 255), 4)
+                    theName = "yaoxinzhi"
                 else:
-                    font = cv2.FONT_HERSHEY_SIMPLEX
-                    cv2.putText(frame, 'unknown', (x + 30, y + 30), font, 1, (255, 0, 255), 4)
+                    pass
+                cv2.putText(frame, theName, (x + 30, y + 30), font, 1, (255, 0, 255), 4)
 
         # 将截取到的图片进行展示，每隔10个单位的时间点
         cv2.imshow("reply", frame)

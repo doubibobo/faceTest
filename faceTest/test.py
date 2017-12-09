@@ -42,7 +42,7 @@ def CatchUsbVideo(window_name, camera_index, catchNumber, imagePath):
 
                 # 将当前帧保存为图片
                 imgName = '%s/%d.jpg'%(imagePath, num)
-                image = frame[y-10:y+h+10, x-10: x+w+10]
+                image = grey[y-10:y+h+10, x-10: x+w+10]
                 cv2.imwrite(imgName, image)
 
                 num = num + 1
@@ -70,6 +70,6 @@ def CatchUsbVideo(window_name, camera_index, catchNumber, imagePath):
     cv2.destroyAllWindows()
 
 if __name__ == '__main__':
-    CatchUsbVideo("catch the picture from the video", 0, 1000, "E:\pythonProject\\faceTest\Practice\yao")
+    CatchUsbVideo("catch the picture from the video", 0, 1000, "E:\pythonProject\\faceTest\Practice\me")
 
 # print("hello, world!")
