@@ -39,7 +39,7 @@ class Datatest:
         images, labels = load_datatest(self.path_name)
         # 训练集和验证集
         # images 表示要划分的样本特征集，labels 表示要划分的样本结果， test_size 是样本在整个样本集中所占的比例
-        self.train_images, self.valid_images, self.train_labels, self.valid_labels = cross_validation.train_test_split(images, labels, test_size=0.3, random_state=random.randint(0, 100))
+        self.train_images, self.valid_images, self.train_labels, self.valid_labels = cross_validation.train_test_split(images, labels, test_size=0.3, random_state=random.randint(0, 23455))
         # 测试集
         _, self.test_images, _,self.test_labels = cross_validation.train_test_split(images, labels, test_size=0.5, random_state=random.randint(0, 23455))
         # 如果当前的维度顺序为th, 则输入的图片顺序应该为：channels, rows, cols, 否则为rows, cols, channels
@@ -126,7 +126,7 @@ class Model:
         self.model.summary()
 
     # 训练自己的模型
-    def train(self, dataset, batch_size=50, nb_epoch=10, data_augmentation = True):
+    def train(self, dataset, batch_size= 100, nb_epoch=20, data_augmentation = True):
         # 采用sgd优化器进行训练，首先生成一个优化器对象
         sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
         # 完成实际模型的配置工作
@@ -203,11 +203,8 @@ if __name__ == '__main__':
     dataset = Datatest("E:\pythonProject\\faceTest\Practice")
     dataset.load()
 
-    model = Model()
-    model.build_model(dataset)
-    model.train(dataset)
-    model.save_model(file_path='E:\pythonProject\\faceTest\model\\allPeople.face.model.h5')
-
     # model = Model()
-    # model.load_model(file_path='E:\pythonProject\\faceTest\model\\allPeople.face.model.h5')
-    # model.evaluate(dataset)
+    # model.build_model(dataset)
+    # model.train(dataset)
+    # model.save_model(file_path='E:\pythonProject\\faceTest\model\\allPeople.face.model.h5')
+
