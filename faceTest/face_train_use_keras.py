@@ -34,14 +34,14 @@ class Datatest:
         self.input_shape = None
 
     # 按照交叉验证的原则划分数据集，进行预处理操作
-    def load(self, img_rows = IMAGE_SIZE, img_cols = IMAGE_SIZE, img_channels = 3, nb_classes = 6):
+    def load(self, img_rows = IMAGE_SIZE, img_cols = IMAGE_SIZE, img_channels = 3, nb_classes = 5):
         # 加载数据集到内存
         images, labels = load_datatest(self.path_name)
         # 训练集和验证集
         # images 表示要划分的样本特征集，labels 表示要划分的样本结果， test_size 是样本在整个样本集中所占的比例
         self.train_images, self.valid_images, self.train_labels, self.valid_labels = cross_validation.train_test_split(images, labels, test_size=0.3, random_state=random.randint(0, 100))
         # 测试集
-        _, self.test_images, _,self.test_labels = cross_validation.train_test_split(images, labels, test_size=0.5, random_state=random.randint(0, 100))
+        _, self.test_images, _,self.test_labels = cross_validation.train_test_split(images, labels, test_size=0.5, random_state=random.randint(0, 23455))
         # 如果当前的维度顺序为th, 则输入的图片顺序应该为：channels, rows, cols, 否则为rows, cols, channels
         # 根据keras库中要求的维度顺序集重组训练的数据集合
         if K.image_dim_ordering() == 'th':
@@ -81,7 +81,7 @@ class Model:
         self.model = None
 
     # 建立自己的训练模型
-    def build_model(self, dataset, nb_classes = 6):
+    def build_model(self, dataset, nb_classes = 5):
         # 创立一个空的神经网络模型，线性堆叠模型，各神经网络层会执行顺序添加
         self.model = Sequential()
         # 以下每一个add都意味着顺序添加一个网络层
@@ -126,7 +126,7 @@ class Model:
         self.model.summary()
 
     # 训练自己的模型
-    def train(self, dataset, batch_size=40, nb_epoch=20, data_augmentation = True):
+    def train(self, dataset, batch_size=50, nb_epoch=10, data_augmentation = True):
         # 采用sgd优化器进行训练，首先生成一个优化器对象
         sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
         # 完成实际模型的配置工作
@@ -191,8 +191,8 @@ class Model:
         print('result:', reslut)
         # 返回结果集
         reslut = self.model.predict_classes(image)
-        print(reslut)
-        return reslut[0]
+        # print(reslut)
+        return reslut
 
     # 进行模型准确率的预测
     def evaluate(self, dataset):

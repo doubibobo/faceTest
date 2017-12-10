@@ -73,10 +73,8 @@ def load_datatest(path_name):
             theLabel[index] = np.array([2])
         elif labels[index].endswith("ge"):
             theLabel[index] = np.array([3])
-        elif labels[index].endswith("yao"):
-            theLabel[index] = np.array([4])
         else:
-            theLabel[index] = np.array([5])
+            theLabel[index] = np.array([4])
 
     # print(theLabel)
     labels = theLabel

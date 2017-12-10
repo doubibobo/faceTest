@@ -46,11 +46,15 @@ if __name__ == '__main__':
             for faceRect in faceRects:
                 x, y, w, h = faceRect
                 # 截取图像进行识别
-                image = grey[y-10: y+h+10,x-10:x+w+10]
+                image = frame[y-10: y+h+10,x-10:x+w+10]
+                imageGrey = grey[y-10: y+h+10, x-10:x+w+10]
                 # 画出矩形框
                 cv2.rectangle(frame, (x-10,y-10),(x+w+10, y+h+10), color, 2)
-                who = model.face_predict(image)
-                print(who)
+                print(image)
+                # print(imageGrey)
+                thePredict = model.face_predict(image)
+                print(thePredict)
+                who = thePredict[0]
                 theName = "unknown"
                 if who == 0:
                     theName = "doubibobo"
