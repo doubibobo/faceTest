@@ -59,13 +59,13 @@ if __name__ == '__main__':
                 if who == 0:
                     theName = "doubibobo"
                 elif who == 1:
-                    theName = "guojuncheng"
+                    theName = "tianyao"
                 elif who == 2:
-                    theName = "lipeng"
+                    theName = "jiang"
                 elif who == 3:
-                    theName = "gelingqiao"
+                    theName = "guo"
                 elif who == 4:
-                    theName = "yaoxinzhi"
+                    theName = "yao"
                 else:
                     pass
                 cv2.putText(frame, theName, (x + 30, y + 30), font, 1, (255, 0, 255), 4)

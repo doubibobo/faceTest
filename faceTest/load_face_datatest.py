@@ -67,14 +67,16 @@ def load_datatest(path_name):
     for index in range(len(labels)):
         if labels[index].endswith("me"):
             theLabel[index] = np.array([0])
-        elif labels[index].endswith("guo"):
+        elif labels[index].endswith("tianyao"):
             theLabel[index] = np.array([1])
-        elif labels[index].endswith("li"):
+        elif labels[index].endswith("jiang"):
             theLabel[index] = np.array([2])
-        elif labels[index].endswith("ge"):
+        elif labels[index].endswith("guo"):
             theLabel[index] = np.array([3])
-        else:
+        elif labels[index].endswith("yao"):
             theLabel[index] = np.array([4])
+        else:
+            theLabel[index] = np.array([5])
 
     # print(theLabel)
     labels = theLabel

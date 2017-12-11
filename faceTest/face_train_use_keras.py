@@ -34,7 +34,7 @@ class Datatest:
         self.input_shape = None
 
     # 按照交叉验证的原则划分数据集，进行预处理操作
-    def load(self, img_rows = IMAGE_SIZE, img_cols = IMAGE_SIZE, img_channels = 3, nb_classes = 5):
+    def load(self, img_rows = IMAGE_SIZE, img_cols = IMAGE_SIZE, img_channels = 3, nb_classes = 6):
         # 加载数据集到内存
         images, labels = load_datatest(self.path_name)
         # 训练集和验证集
@@ -81,7 +81,7 @@ class Model:
         self.model = None
 
     # 建立自己的训练模型
-    def build_model(self, dataset, nb_classes = 5):
+    def build_model(self, dataset, nb_classes = 6):
         # 创立一个空的神经网络模型，线性堆叠模型，各神经网络层会执行顺序添加
         self.model = Sequential()
         # 以下每一个add都意味着顺序添加一个网络层
@@ -202,13 +202,13 @@ if __name__ == '__main__':
     dataset = Datatest("E:\pythonProject\\faceTest\Practice")
     dataset.load()
 
-    model = Model()
-    model.build_model(dataset)
-    model.train(dataset)
-    model.save_model(file_path='E:\pythonProject\\faceTest\model\\allPeople.face.model.h5')
+    # model = Model()
+    # model.build_model(dataset)
+    # model.train(dataset)
+    # model.save_model(file_path='E:\pythonProject\\faceTest\model\\allPeople.face.model.h5')
 
     # 评估模型
-    # model = Model()
-    # model.load_model(file_path='E:\pythonProject\\faceTest\model\\allPeople.face.model.h5')
-    # model.evaluate(dataset)
+    model = Model()
+    model.load_model(file_path='E:\pythonProject\\faceTest\model\\allPeople.face.model.h5')
+    model.evaluate(dataset)
 
