@@ -126,7 +126,7 @@ class Model:
         self.model.summary()
 
     # 训练自己的模型
-    def train(self, dataset, batch_size= 20, nb_epoch=10, data_augmentation = True):
+    def train(self, dataset, batch_size= 40, nb_epoch=20, data_augmentation = True):
         # 采用sgd优化器进行训练，首先生成一个优化器对象
         sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
         # 完成实际模型的配置工作
@@ -202,13 +202,13 @@ if __name__ == '__main__':
     dataset = Datatest("E:\pythonProject\\faceTest\Practice")
     dataset.load()
 
-    # model = Model()
-    # model.build_model(dataset)
-    # model.train(dataset)
-    # model.save_model(file_path='E:\pythonProject\\faceTest\model\\allPeople.face.model.h5')
+    model = Model()
+    model.build_model(dataset)
+    model.train(dataset)
+    model.save_model(file_path='E:\ pythonProject\\faceTest\model\\allPeople.face.model.h5')
 
     # 评估模型
-    model = Model()
-    model.load_model(file_path='E:\pythonProject\\faceTest\model\\allPeople.face.model.h5')
-    model.evaluate(dataset)
+    # model = Model()
+    # model.load_model(file_path='E:\pythonProject\\faceTest\model\\allPeople.face.model.h5')
+    # model.evaluate(dataset)
 
